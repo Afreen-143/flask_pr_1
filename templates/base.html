@@ -1,77 +1,149 @@
+<!-- base.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Base Page</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Library Management</title>
+
+    <!-- BOOTSTRAP -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<!-- NAVBAR -->
 
-        <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-            <a class="navbar-brand" href="/home">
-                MY-COMPANY_LOGO
-            </a>
+    <div class="container-fluid">
 
-            <button class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav">
+        <!-- LOGO -->
 
-                <span class="navbar-toggler-icon"></span>
+        <a class="navbar-brand"
+           href="{{ url_for('homepage') }}">
 
-            </button>
+            My Library
 
-            <div class="collapse navbar-collapse" id="navbarNav">
+        </a>
 
-                <ul class="navbar-nav">
+        <!-- MOBILE BUTTON -->
 
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/home">
-                            Home
-                        </a>
-                    </li>
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">
-                            Contact
-                        </a>
-                    </li>
+            <span class="navbar-toggler-icon"></span>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">
-                            About
-                        </a>
-                    </li>
+        </button>
 
-                </ul>
+        <!-- NAV LINKS -->
 
-            </div>
+        <div class="collapse navbar-collapse"
+             id="navbarNav">
+
+            <ul class="navbar-nav">
+
+                <!-- HOME -->
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{{ url_for('home') }}">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+                <!-- ABOUT -->
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{{ url_for('about') }}">
+
+                        About
+
+                    </a>
+
+                </li>
+
+                <!-- CONTACT -->
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{{ url_for('contact') }}">
+
+                        Contact
+
+                    </a>
+
+                </li>
+
+                <!-- CRUD HOME -->
+
+                
+                <!-- BOOK DETAILS -->
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{{ url_for('book_details') }}">
+
+                        Book Details
+
+                    </a>
+
+                </li>
+
+                <!-- ADD BOOK -->
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{{ url_for('add_book') }}">
+
+                        Add Book
+
+                    </a>
+
+                </li>
+
+            </ul>
 
         </div>
 
-    </nav>
-
-
-    <div class="container mt-4">
-
-        {% block content %}
-
-        {% endblock %}
-
     </div>
 
+</nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<!-- PAGE CONTENT -->
+
+<div class="container mt-5">
+
+    {% block content %}
+
+    {% endblock %}
+
+</div>
+
+<!-- BOOTSTRAP JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>

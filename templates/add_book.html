@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Add Book</h1>
+
+<form method="POST">
+
+    <div class="mb-3">
+        <label>ID</label>
+        <input type="number" name="id" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label>Book</label>
+        <input type="text" name="book" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label>Author</label>
+        <input type="text" name="author" class="form-control">
+    </div>
+
+    <div class="mb-3">
+         <label>Price</label>
+        <input type="number" name="price" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Add Book
+    </button>
+
+    <a href="/" class="btn btn-secondary">
+        Home
+    </a>
+
+</form>
+
+{% endblock %}

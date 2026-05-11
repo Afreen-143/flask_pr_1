@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="mb-4">Library Home Page</h1>
+
+<!-- BUTTONS -->
+
+<a href="/book-details"
+   class="btn btn-dark me-2">
+
+    Book Details
+
+</a>
+
+<a href="/add-book"
+   class="btn btn-primary">
+
+    Add Book
+
+</a>
+
+<hr>
+
+<!-- BOOK TABLE -->
+
+<h2>All Books</h2>
+
+<table class="table table-bordered table-hover">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>ID</th>
+            <th>Book</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Actions</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for book in books %}
+
+        <tr>
+
+            <!-- BOOK ID -->
+
+            <td>{{ book.id }}</td>
+
+            <!-- BOOK NAME -->
+
+            <td>{{ book.book }}</td>
+
+            <!-- AUTHOR -->
+
+            <td>{{ book.author }}</td>
+
+            <!-- PRICE -->
+
+            <td>₹ {{ book.price }}</td>
+
+            <!-- ACTION BUTTONS -->
+
+            <td>
+
+                <!-- UPDATE BUTTON -->
+
+                <a href="/update-book/{{ book.id }}"
+                   class="btn btn-warning btn-sm">
+
+                    Update
+
+                </a>
+
+                <!-- DELETE BUTTON -->
+
+                <a href="/delete-book/{{ book.id }}"
+                   class="btn btn-danger btn-sm">
+
+                    Delete
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}
