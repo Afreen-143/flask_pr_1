@@ -69,11 +69,40 @@ def add_book():
 
     return jsonify(new_book.to_dict()), 201
         
-@app.route('/api/books/<int:id>', methods=['PATCH',])
+@app.route('/api/books/<int:id>', methods=['PATCH'])
 def update_book(id):
-        data_to_update=request.get_json()  #getting from api
-        old_data=Book.query.get(id)   #got data in object
-        old_data.book=old_data.get('book',old_data.book)
+
+    data_to_update = request.get_json()
+
+    old_data = Book.query.get(id)
+    old_data.book = data_to_update.get('book', old_data.book)
+    old_data.author = data_to_update.get('author', old_data.author)
+    old_data.price = data_to_update.get('price', old_data.price)
+    db.session.commit()
+
+    return jsonify(old_data.to_dict()), 200
+
+
+
+@app.route('/api/books/<int:id>', methods=['DELETE'])
+def delete_book(id):
+
+    book = Book.query.get(id)
+
+    if not book:
+        return jsonify({
+            "message": "Book not found"
+        }), 404
+
+    db.session.delete(book)
+
+    db.session.commit()
+
+    return jsonify({
+        "message": "Book deleted successfully"
+    }), 200
+
+        
 
 
 if __name__ == "__main__" :                                                                                                           
